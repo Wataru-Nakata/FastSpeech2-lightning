@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fastspeech2-lightning"
+version = "0.1.0"
+description = "Fastspeech2 training script based on lightning"
+authors = ["Wataru Nakata <wataru9871@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastspeech2_lightning"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytorch-lightning = "^1.9.4"
+torchaudio = "^0.13.1"
+torch = "^1.13.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
