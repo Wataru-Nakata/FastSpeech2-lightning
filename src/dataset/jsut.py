@@ -1,4 +1,5 @@
 import torch
+import torchaudio
 from pathlib import Path
 from .preprocessDataset import PreprocessDataset
 class JSUTDataset(PreprocessDataset):
@@ -16,6 +17,7 @@ class JSUTDataset(PreprocessDataset):
         self.wav_files = list(self.root.glob('**/*.wav'))
         self.transcript_files = list(self.root.glob('**/transcript_utf8.txt'))
         self.alignment_files = list(self.root.glob('**/*.wav'))
+        self.current_wav_index = 0
 
         self.transcript = dict()
         for transcript_file in self.transcript_files:
@@ -24,9 +26,17 @@ class JSUTDataset(PreprocessDataset):
                 for line in lines:
                     k,v = line.strip().split(':')
                     self.transcript[k] = v
-        for alignment_file in self.alignment_files:
-            with alignment_file.open() as f:
-                lines = f.readlines()
-                for line in lines:
-                    k,v = line.strip().split(':')
-        
+    def parse_alignment_file(self):
+        pass
+
+    def __next__(self):
+        wav_file_path:Path = self.wav_files[self.current_wav_index]
+        transcript:str = self.transcript[wav_file_path.stem]
+        alignment = self.pares_alignment_file(wav_file_path.stem)
+        return wav_file_path,transcript,alignment
+
+
+    def __len__(self):
+        return len(self.wav_files)
+
+
