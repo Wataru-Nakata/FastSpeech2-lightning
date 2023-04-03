@@ -1,0 +1,3 @@
+__target__: src.dataset.jsut.JSUTDataset
+root: ../../datasets/jsut_ver1.1
+alighnment_root: ../../datasets/jsut_ver1.1
