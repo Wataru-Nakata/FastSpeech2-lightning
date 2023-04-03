@@ -1,0 +1,21 @@
+stft:
+  n_fft: 1024
+  win_length: 1024
+  hop_length: 256
+  power: 1
+  center: True
+mel:
+  n_mels: 80
+  sample_rate: ${sample_rate}
+  f_min: 0
+  f_max: 8000
+  n_stft: 513 #${preprocess.stft.n_fft} // 2 + 1
+  norm: "slaney"
+  mel_scale: "slaney"
+
+audio:
+  sample_rate: ${sample_rate}
+defaults:
+  - preprocess_dataset: JSUT
+
+tar_path: JSUT.tar
