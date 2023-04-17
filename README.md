@@ -14,6 +14,8 @@ Training script for Fastspeech2 based on [pytorch lightning](https://pytorch-lig
 # Environment setup
 1. Prepare vocoder
     * Vocoder is available on https://github.com/jik876/hifi-gan
+1. Setup path
+    * checkout config directory for details
 1 . Run `poetry install` and enter environment using `poetry shell`
 
 # Training
