@@ -19,3 +19,8 @@ Training script for Fastspeech2 based on [pytorch lightning](https://pytorch-lig
 # Training
 1. `python src/train.py`
 
+# Acknowledgement
+* [ming024's implementation of FastSpeech2](https://github.com/ming024/FastSpeech2). Good portion of the code comes from this repository.
+* [jik876's paper and impelementation of HiFi-GAN](https://github.com/jik876/hifi-gan) is used for vocoder.
+* [JSUT corpus by Shinnosuke Takamichi](https://sites.google.com/site/shinnosuketakamichi/publication/jsut)
+* [Phoneme alignment for JSUT by r9y9](https://github.com/r9y9/jsut-lab)
