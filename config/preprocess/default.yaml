@@ -18,4 +18,19 @@ audio:
 defaults:
   - preprocess_dataset: JSUT
 
-tar_path: JSUT.tar
+
+train_tar_sink:
+  _target_: webdataset.ShardWriter
+  pattern: "preprocessed_data/JSUT/JSUT-train-%06d.tar.gz"
+val_tar_sink:
+  _target_: webdataset.ShardWriter
+  pattern: "preprocessed_data/JSUT/JSUT-val-%06d.tar.gz"
+val_size: 500
+
+stats_path: preprocessed_data/JSUT/stats.json
+speakers_path: preprocessed_data/JSUT/speakers.json
+vocab_path: preprocessed_data/JSUT/vocab.txt
+accent_vocab_path: preprocessed_data/JSUT/accent_vocab.txt
+
+pitch_phoneme_averaging: True
+energy_phoneme_averaging: True

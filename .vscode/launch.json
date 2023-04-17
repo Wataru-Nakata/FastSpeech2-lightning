@@ -11,6 +11,14 @@
             "program": "src/preprocess.py",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Python: run training",
+            "type": "python",
+            "request": "launch",
+            "program": "src/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

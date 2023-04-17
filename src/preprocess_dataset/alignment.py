@@ -2,7 +2,7 @@ import re
 
 
 class Alignment:
-    def __init__(self, phones, starts, ends,accents=None) -> None:
+    def __init__(self, phones:list[str], starts:list[float], ends:list[float],accents:list[str]=None) -> None:
         self.phones = phones
         self.starts = starts
         self.ends = ends
@@ -14,7 +14,7 @@ class Alignment:
 
     def __next__(self):
         self.index+=1
-        if self.index > self.phones:
+        if self.index >= len(self.phones):
             raise StopIteration
         if self.accents == None:
             return self.phones[self.index], self.starts[self.index], self.ends[self.index]
@@ -29,12 +29,12 @@ def numeric_feature_by_regex(regex, s):
     if match is None:
         return -50
     return int(match.group(1))
-def pp_symbols(labels, drop_unvoiced_vowels=True):
+def pp_symbols(labels, drop_unvoiced_vowels=False):
     PP = []
     accent = []
     N = len(labels)
 
-    for n in range(len(labels)):
+    for n in range(N):
         lab_curr = labels[n]
 
 
@@ -45,19 +45,23 @@ def pp_symbols(labels, drop_unvoiced_vowels=True):
 
         if p3 == 'sil':
             assert n== 0 or n == N-1
-            if n == N-1:
+            if n ==0:
+                PP.append("sil")
+                accent.append("0")
+            elif n == N-1:
                 e3 = numeric_feature_by_regex(r"!(\d+)_", lab_curr)
                 if e3 == 0:
-                    PP.append("")
+                    PP.append("sil")
+                    accent.append("0")
                 elif e3 == 1:
-                    PP.append("")
+                    PP.append("sil")
+                    accent.append("?")
             continue
         elif p3 == "pau":
             PP.append("sp")
             accent.append('0')
             continue
-        else:
-            PP.append(p3)
+        PP.append(p3)
         # アクセント型および位置情報（前方または後方）
         a1 = numeric_feature_by_regex(r"/A:([0-9\-]+)\+", lab_curr)
         a2 = numeric_feature_by_regex(r"\+(\d+)\+", lab_curr)

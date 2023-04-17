@@ -196,3 +196,7 @@ tags
 
 outputs
 *.tar
+tb_logs
+wandb
+UNIVERSAL_V1
+preprocessed_data

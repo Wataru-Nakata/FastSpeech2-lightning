@@ -1,7 +1,7 @@
 import pyrootutils
 import hydra
 from omegaconf import DictConfig
-from dataset.preprocessor import Preprocessor
+from preprocess_dataset.preprocessor import Preprocessor
 
 pyrootutils.setup_root(__file__, indicator='.project-root',pythonpath=True)
 

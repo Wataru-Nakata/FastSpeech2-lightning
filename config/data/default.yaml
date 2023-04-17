@@ -1,0 +1,13 @@
+datamodule:
+  _target_: src.datamodule.fs2_datamodule.FS2DataModule
+train_dataset_path: preprocessed_data/JSUT/JSUT-train-{000000..000001}.tar.gz
+val_dataset_path: preprocessed_data/JSUT/JSUT-val-000000.tar.gz
+
+speakers_path: preprocessed_data/JSUT/speakers.json
+vocab_path: preprocessed_data/JSUT/vocab.txt
+accent_vocab_path: preprocessed_data/JSUT/accent_vocab.txt
+
+train_batch_size: 8
+val_batch_size: 8
+
+
