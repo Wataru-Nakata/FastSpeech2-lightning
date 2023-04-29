@@ -40,10 +40,10 @@ class FS2DataModule(lightning.LightningDataModule):
         )
 
     def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.cfg.train_batch_size, collate_fn=self.collate_fn,num_workers=0)
+        return DataLoader(self.train_dataset, batch_size=self.cfg.train_batch_size, collate_fn=self.collate_fn,num_workers=20)
 
     def val_dataloader(self):
-        return DataLoader(self.val_dataset, batch_size=self.cfg.val_batch_size, collate_fn=self.collate_fn,num_workers=0)
+        return DataLoader(self.val_dataset, batch_size=self.cfg.val_batch_size, collate_fn=self.collate_fn,num_workers=20)
 
     def collate_fn(self, batch):
         outputs = dict()

@@ -7,7 +7,7 @@ speakers_path: preprocessed_data/JSUT/speakers.json
 vocab_path: preprocessed_data/JSUT/vocab.txt
 accent_vocab_path: preprocessed_data/JSUT/accent_vocab.txt
 
-train_batch_size: 8
+train_batch_size: 32
 val_batch_size: 8
 
 

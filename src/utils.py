@@ -12,12 +12,12 @@ def plot_mel(data, stats, titles):
         ax = fig.add_axes(old_ax.get_position(), anchor="W")
         ax.set_facecolor("None")
         return ax
-
     for i in range(len(data)):
         mel, pitch, energy = data[i]
         mel = mel.cpu()
         pitch = pitch * pitch_std + pitch_mean
-        axes[i][0].imshow(mel, origin="lower")
+        pos = axes[i][0].imshow(mel, origin="lower")
+        fig.colorbar(pos,ax=axes[i][0])
         axes[i][0].set_aspect(2.5, adjustable="box")
         axes[i][0].set_ylim(0, mel.shape[0])
         axes[i][0].set_title(titles[i], fontsize="medium")
@@ -33,6 +33,7 @@ def plot_mel(data, stats, titles):
         ax1.tick_params(
             labelsize="x-small", colors="tomato", bottom=False, labelbottom=False
         )
+        
 
         ax2 = add_axis(fig, axes[i][0])
         ax2.plot(energy, color="darkviolet")
