@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Fastspeech2 training script based on lightning"
 authors = ["Wataru Nakata <wataru9871@gmail.com>"]
 readme = "README.md"
-packages = [{include = "fastspeech2_lightning"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
