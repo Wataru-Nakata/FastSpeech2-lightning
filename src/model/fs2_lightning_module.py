@@ -22,7 +22,7 @@ class FS2LightningModule(lightning.LightningModule):
             cfg.model, cfg=cfg.model_conf, stats_path=stats_path)
         self.loss: torch.nn.Module = hydra.utils.instantiate(
             cfg.loss, cfg=cfg.loss_conf)
-        self.vocoder: torch.nn.Moduel = get_vocoder(cfg.vocoder.vocoder_path)
+        self.vocoder: torch.nn.Module = get_vocoder(cfg.vocoder.vocoder_path)
         self.save_hyperparameters()
 
         self.pitch_mean = self.model.variance_adaptor.pitch_mean
@@ -177,5 +177,5 @@ class FS2LightningModule(lightning.LightningModule):
 
     def synth_wav(self, mels: torch.Tensor):
         with torch.no_grad():
-            wav = self.vocoder(mels)
+            wav = self.vocoder(mels).float()
         return wav.squeeze().cpu().numpy()
